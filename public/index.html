@@ -7,25 +7,43 @@
     <link rel="stylesheet" type="text/css" href="/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
   </head>
+  <header>
+    <div class="container">
+      <h2>Cracking the Coding Interview Prep</h2>
+      <div id="user_div" class="loggedin-div">
+        <p id="user_para">Welcome</p>
+        <button id="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
   <body>
     <div id="login_div" class="main-div">
-      <h3>Cracking the Coding Interview Prep</h3>
-      <input type="email" placeholder="Email..." id="email_field" />
-      <input type="password" placeholder="Password..." id="password_field" />
-      <button id="login" onclick="login()">Login</button>
-      <button id="register" onclick="register()">Register</button>
+      <div class="register-div">
+        <h3>Register</h3>
+        <input type="text" placeholder="First Name..." id="firstname_field" />
+        <input type="text" placeholder="Last Name..." id="lastname_field" />
+        <input type="email" placeholder="Email..." id="email_field" />
+        <input type="password" placeholder="Password..." id="password_field" />
+        <button id="register" onclick="register()">Register</button>
+        <a id="message" onclick="loginMessage()" href="#"
+          >Already a member? <strong>Login</strong></a
+        >
+      </div>
+      <div class="login-div">
+        <h3>Login</h3>
+        <input type="email" placeholder="Email..." id="email_field2" />
+        <input type="password" placeholder="Password..." id="password_field2" />
+        <button id="login" onclick="login()">Login</button>
+        <a id="message" href="#" onclick="registerMessage()"
+          >Not registered yet? <strong>Register</strong></a
+        >
+      </div>
     </div>
-    <div id="user_div" class="loggedin-div">
-      <h3>Welcome User</h3>
-      <p id="user_para">
-        Welcome to Cracking the coding interview prep! You're currently logged
-        in.
-      </p>
-      <button onclick="logout()">Logout</button>
-    </div>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
     <script>
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
