@@ -79,32 +79,36 @@ h3 {
 LOGGED IN
 ************************************************/
 
-.container {
-  background-color: #e9e9e9;
-  padding: 10px 10px;
-}
-#user_div {
+.loggedin-div {
   width: 100%;
-  text-align: right;
-  display: inline-block;
-}
+  background-color: #e9e9e9;
+  overflow: hidden;
 
-#logout {
-  padding: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.text {
+  overflow: hidden;
+  display: block;
+  margin-left: 87%;
+  font-size: 25px;
+}
+button {
+  float: right;
+  margin-right: 1%;
   background: #3ba061;
   color: #fff;
-  border: 3px solid #ffffff;
-  border-radius: 5px;
-
+  padding: 8px;
   transition: 0.3s;
-  width: 5%;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
 }
-
-#logout:hover {
+button:hover {
   color: #fff;
   background: #1d4e30;
   border: 3px solid #ffffff;
   cursor: pointer;
+}
+h2 {
+  text-align: center;
 }

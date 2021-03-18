@@ -11,13 +11,15 @@ firebase.auth().onAuthStateChanged(function (user) {
           if (doc && doc.exists) {
             const myData = doc.data();
             document.getElementById("user_para").innerHTML =
-              "Welcome " + myData.firstname;
+              "Welcome " +
+              myData.firstname.substring(0, 1).toUpperCase() +
+              myData.firstname.substring(1).toLowerCase() +
+              "!";
           }
         })
         .catch(function (error) {
           console.log("Got an error: ", error);
         });
-      //var email_id = user.email;
     }
   } else {
     //no user is signed in
