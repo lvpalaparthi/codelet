@@ -1,3 +1,5 @@
+var firestore = firebase.firestore();
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     //user is signed in
@@ -5,13 +7,14 @@ firebase.auth().onAuthStateChanged(function (user) {
     document.getElementById("login_div").style.display = "none";
     var user = firebase.auth().currentUser;
     if (user != null) {
+      const docRef = firestore.doc(`users/${user.email}`);
+      console.log(user);
       docRef
         .get()
         .then(function (doc) {
           if (doc && doc.exists) {
             const myData = doc.data();
             document.getElementById("user_para").innerHTML =
-              "Welcome " +
               myData.firstname.substring(0, 1).toUpperCase() +
               myData.firstname.substring(1).toLowerCase() +
               "!";
@@ -27,12 +30,11 @@ firebase.auth().onAuthStateChanged(function (user) {
     document.getElementById("login_div").style.display = "block";
   }
 });
-var firestore = firebase.firestore();
-const docRef = firestore.doc("users/userData");
 
 function login() {
   var userEmail = document.getElementById("email_field2").value;
   var userPassword = document.getElementById("password_field2").value;
+
   firebase
     .auth()
     .signInWithEmailAndPassword(userEmail, userPassword)
@@ -54,7 +56,7 @@ function register() {
   var userPassword = document.getElementById("password_field").value;
   var userFirstName = document.getElementById("firstname_field").value;
   var userLastName = document.getElementById("lastname_field").value;
-
+  const docRef = firestore.doc(`users/${userEmail}`);
   firebase
     .auth()
     .createUserWithEmailAndPassword(userEmail, userPassword)
